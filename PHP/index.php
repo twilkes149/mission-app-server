@@ -19,13 +19,14 @@
 	$conn = new mysqli($hn, $db, $un, $pw);
 	if ($conn->connect_error)
 		echo "error connecting: " . $conn->connect_error;
-	else
-		echo "connected";
+	else {
+		echo "connected";		
+	}
 
 	try {
-    	$dbh = new PDO($dhn, $un, $pw);
+    	$dbh = new PDO("mysql:dbname=$db;host=$hn", $un, $pw);
     	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	} catch (PDOException $e) {
-	    echo 'Connection failed: ' . $e->getMessage();
+	    echo '\nConnection failed: ' . $e->getMessage();
 	}
 ?>
