@@ -13,7 +13,7 @@
     . "sslmode=require;"
     . "password=".$pw.";";
 
-	$db = new PDO($dsn);
+	//$db = new PDO($dsn);
 	
 
 	$conn = new mysqli($hn, $db, $un, $pw);
@@ -24,8 +24,8 @@
 	}
 
 	try {
-    	$dbh = new PDO("mysql:dbname=$db;host=$hn", $un, $pw);
-    	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    	//$dbh = new PDO("mysql:dbname=$db;host=$hn", $un, $pw);
+    	//$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	} catch (PDOException $e) {
 	    echo '\nConnection failed: ' . $e->getMessage();
 	}
