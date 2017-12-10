@@ -16,7 +16,7 @@
 	//$db = new PDO($dsn);
 	
 
-	$conn = new mysqli($hn, $db, $un, $pw);
+	$conn = new mysqli($hn, $un, $pw, $db);
 	if ($conn->connect_error)
 		echo "error connecting: " . $conn->connect_error;
 	else {
