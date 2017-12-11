@@ -15,6 +15,7 @@
 				password TEXT NOT NULL);";
 
     	$result = $dbh->query($query);
+    	
     	if ($result)
     		echo "success";
     	else
@@ -22,5 +23,8 @@
       
 	} catch (PDOException $e) {
 	    echo '\nConnection failed: ' . $e->getMessage();
+	} catch (Exception $e) {
+		echo '/Failed: ' . $e->getMessage();
 	}
+
 ?>
