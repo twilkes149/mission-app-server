@@ -4,4 +4,12 @@
 	$un = "ygjimiznfuhdwx";
 	$pw = "    43f3f9ce69ff11e6225e5796b4996eeb15878c95a6feb30e668ecb19dde68a3e";
 	$port = "5432";
+
+  $dsn = "pgsql:"
+    . "host=".$hn.";"
+    . "dbname=".$db.";"
+    . "user=".$un.";"
+    . "port=".$port.";"
+    . "sslmode=require;"
+    . "password=".$pw.";";
 ?>

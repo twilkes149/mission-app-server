@@ -1,21 +1,26 @@
 <?php
 	require_once "login.php";
 
-	$conn = new mysqli($hn, $un, $pw, $db);
+	$db = new PDO($dsn);//create database link
 
 	//create database connection
-	if ($conn->connect_error
-		echo "Connection error: " . $conn->connect_error;
+	try {
+    	$dbh = new PDO("mysql:dbname=$db;host=$hn", $un, $pw);
+    	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	//set up sql statement
-	$query = "CREATE TABLE if not exists user (
-		id INT NOT NULL AUTO_INCREMENT,
-		userName TEXT NOT NULL,
-		password TEXT NOT NULL);";
+    	//set up sql statement
+			$query = "CREATE TABLE if not exists user (
+				id INT NOT NULL AUTO_INCREMENT,
+				userName TEXT NOT NULL,
+				password TEXT NOT NULL);";
 
-	$result = $conn->query($query);//query the database
-	if (!$result)//error happened
-		echo "Database query failed: " . $conn->error;
-	else
-		echo "Success.";
+    	$result = $dbh->query($query);
+    	if ($result)
+    		echo "success";
+    	else
+    		echo "failed";
+      
+	} catch (PDOException $e) {
+	    echo '\nConnection failed: ' . $e->getMessage();
+	}
 ?>
