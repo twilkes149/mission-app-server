@@ -30,8 +30,9 @@
   try {
     $conn = new PDO("pgsql:host=$host;port=$port;dbname=$db;user=$un;password=$pw");
     // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
+    $conn = null;
   }
   catch(PDOException $e)
   {
