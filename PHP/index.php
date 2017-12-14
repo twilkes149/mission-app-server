@@ -28,7 +28,7 @@
     password TEXT NOT NULL);";
 
   try {
-    $conn = new PDO("pgsql:host=$host;port=$port;dbname=$db;user=$un;password=$pw");
+    $conn = new PDO("pgsql:host=$host;port=$port;dbname=$db", $un, $pw);
     // set the PDO error mode to exception
     //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
