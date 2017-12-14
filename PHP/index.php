@@ -27,14 +27,14 @@
     userName TEXT NOT NULL,
     password TEXT NOT NULL);";
 
-  $pg_conn = pg_connect("host = $host port = $port dbname = $db user = $un password = $pw");//create connection
-
-
-  // Now let's use the connection for something silly just to prove it works:
-  $result = pg_query($pg_conn, $query);
-
-  if ($result)
-    echo "success: ". $result;
-  else
-    echo "failed: " . $result;
+  try {
+    $conn = new PDO("pgsql:host=$host;port=$port;dbname=$db;user=$un;password=$pw");
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+  }
+  catch(PDOException $e)
+  {
+    echo "Connection failed: " . $e->getMessage();
+  }
 ?>
